@@ -1,0 +1,94 @@
+ame: market-data-analysis
+description: 联想Portfolio Manager部门的市场数据分析工具，支持季度Excel数据处理、地区/价格段/CPU多维度市场份额计算，自动生成同比分析和策略建议；当需要分析季度市场数据、评估品牌竞争态势或制定产品规划时使用
+dependency:
+  python:
+    - pandas>=1.5.0
+    - openpyxl>=3.0.0
+---
+
+# 市场数据分析报告工具
+
+## 任务目标
+- 本工具用于:季度市场数据分析报告的自动化生成
+- 核心能力:Excel数据处理、多维度市场份额计算、观点分析、策略建议
+- 触发条件:每季度市场数据更新时、竞品分析需求、产品规划讨论
+
+## 前置准备
+
+### 依赖安装
+```bash
+pip install pandas>=1.5.0 openpyxl>=3.0.0
+```
+
+### 输入文件准备
+1. **市场原始数据**:季度销售/出货数据Excel文件
+   - 必需字段:品牌、地区、价格段、CPU类型、数量/金额
+   - 格式要求:见 [references/data_format_spec.md](references/data_format_spec.md)
+2. **产品信息**(可选):部门产品组合Excel文件
+   - 用途:生成策略insights时参考
+
+## 操作流程
+
+### Step 1: 数据处理
+调用脚本处理原始Excel数据:
+```bash
+python scripts/data_processor.py --input ./market_data.xlsx --output ./processed_data.json --compare ./last_quarter.xlsx
+```
+
+脚本执行内容:
+- 读取原始Excel数据
+- 执行字段调整(模拟sum_if逻辑)
+- 计算各维度市场份额
+- 生成同比对比数据
+
+### Step 2: 数据分析
+智能体读取处理结果,执行以下分析:
+1. **整体市场概况**:市场规模、同比变化
+2. **维度分析**:按地区/价格段/CPU的市场份额与变化
+3. **品牌表现**:重点品牌份额与趋势
+4. **竞品对比**:与联想的竞争关系
+
+### Step 3: 观点生成
+根据 [references/analysis_framework.md](references/analysis_framework.md) 中的分析框架生成:
+- 本季度市场同比变化要点
+- 值得关注的品牌表现
+- 主要市场机会与风险
+
+### Step 4: 策略建议
+结合产品信息与数据分析,输出:
+- 竞品在哪些维度超过了联想
+- 下一季度产品规划建议
+- 具体市场份额目标
+
+## 资源索引
+
+- 数据处理脚本:见 [scripts/data_processor.py](scripts/data_processor.py)
+- 数据格式规范:见 [references/data_format_spec.md](references/data_format_spec.md)
+- 分析框架:见 [references/analysis_framework.md](references/data_format_spec.md)
+- 报告模板:见 [assets/report_template.md](assets/report_template.md)
+
+## 输出说明
+
+脚本输出JSON结构:
+```json
+{
+  "summary": {"total": , "yoy_change": },
+  "by_region": [{"region": "", "share": , "yoy": }],
+  "by_price": [{"price_segment": "", "share": , "yoy": }],
+  "by_cpu": [{"cpu_type": "", "share": , "yoy": }],
+  "brand_ranking": [{"brand": "", "share": , "yoy": }]
+}
+```
+
+## 使用示例
+
+**完整报告生成流程**:
+1. 用户提供本季度数据文件 + 上季度对比文件(如需要)
+2. 执行数据处理脚本
+3. 智能体读取JSON结果
+4. 按分析框架生成报告内容
+5. 输出完整分析报告
+
+**仅做数据分析**:
+1. 执行脚本处理数据
+2. 读取JSON查看各维度份额数据
