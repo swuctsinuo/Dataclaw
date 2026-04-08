@@ -1,0 +1,111 @@
+---
+name: market-intel-research
+description: PC市场动态情报调研工具；支持联想消费业务Portfolio Management部门进行新财年产品规划时，检索IDC预测/TAM/价格带结构、AI PC渗透率与技术路线、关键用户场景变化（教育/银发族/游戏）、技术趋势、供应链风险、AI Native Device等六大核心话题的联网信息整理
+---
+
+# Market Intelligence Research Skill
+
+## 任务目标
+
+本 Skill 用于支持联想消费业务 Portfolio Management 部门的新财年产品规划，通过联网检索与信息整理，提供 PC 行业六大核心话题的市场情报。
+
+## 能力范围
+
+- 宏观市场趋势：IDC 预测、TAM、价格结构、区域分布
+- AI PC 渗透率与技术路线：NPU 规格、芯片生态、软件生态
+- 关键用户场景：教育、银发族、游戏 PC、内容创作
+- 技术趋势：算力、散热、屏幕、形态、连接性
+- 供应链风险与竞争格局：主要玩家、组件供应商、地缘政治
+- AI Native Device：定义、架构、生态
+
+## 触发条件
+
+用户表达涉及以下场景时触发本 Skill：
+- "调研 PC 市场动态"、"市场情报"、"行业趋势"
+- "新财年产品规划"、"Portfolio Management"、"产品策略"
+- "AI PC 趋势"、"NPU 渗透率"、"技术路线"
+- "用户场景分析"、"教育市场"、"银发族"、"游戏 PC"
+- "供应链风险"、"竞争格局"、"供应商"
+- "AI Native Device"、"Out of box"、"AI 原生设备"
+
+## 操作步骤
+
+### 标准流程
+
+1. **确认研究话题**
+   - 明确用户需要聚焦的六大话题范围
+   - 确认地域范围（全球/区域/特定国家）
+   - 确认时间范围（年度/季度/特定财年）
+
+2. **执行联网检索**
+   - 通过 web_search 工具检索各话题关键词
+   - 优先搜索权威来源：IDC、Gartner、IDC Tracker、TrendForce
+   - 检索行业媒体：The Verge、Ars Technica、AnandTech、Notebookcheck
+   - 搜索厂商动态：Intel、AMD、NVIDIA、Qualcomm 官方发布
+
+3. **整理与综合**
+   - 按六大话题分类整理信息
+   - 标注数据来源与时间
+   - 区分事实数据与趋势分析
+   - 识别关键洞察与战略含义
+
+4. **输出与交付**
+   - 生成结构化的市场情报报告
+   - 提供数据可视化建议（如适用）
+   - 标注信息置信度与数据缺口
+
+### 关键检索词参考
+
+| 话题 | 检索关键词 |
+|------|-----------|
+| 宏观市场 | `PC market forecast 2025`, `IDC PC shipment`, `Gartner PC outlook` |
+| AI PC | `AI PC NPU TOPS`, `Copilot+ PC`, `Intel Core Ultra AI`, `AMD Ryzen AI` |
+| 教育市场 | `education PC market`, `Chromebook forecast`, `K-12 PC` |
+| 银发族 | `senior PC usage`, `elderly technology adoption`, `50+ computing` |
+| 游戏 PC | `gaming laptop market`, `RTX 50 series`, `gaming PC trends 2025` |
+| 供应链 | `PC component supply chain`, `TSMC capacity`, `geopolitical risk chip` |
+
+## 资源索引
+
+- 市场情报框架：见 [references/market-research-framework.md](references/market-research-framework.md)（完整六大话题分析框架）
+- 本地研究文档：基于市场情报框架生成的最新报告
+
+## 注意事项
+
+- 优先使用 web_search 工具获取最新数据
+- 对于付费研究报告（如 IDC Tracker），标注信息来源并提示局限性
+- 注意数据时效性，区分 2024/2025/2026 年数据
+- 供应链风险分析需标注置信度
+- 用户未指定范围时，提供全球视角的综合分析
+
+## 使用示例
+
+### 示例 1：全面市场调研
+
+**用户输入：**
+> 请调研 2025 年 PC 市场动态，涵盖宏观趋势、AI PC、教育市场、银发族、游戏 PC、供应链六大话题。
+
+**执行方式：**
+1. 使用 web_search 工具分别检索各话题关键词
+2. 综合检索结果，按框架整理
+3. 输出完整市场情报报告
+
+### 示例 2：聚焦特定话题
+
+**用户输入：**
+> 我需要了解 AI PC 的渗透率和技术路线，重点关注 NPU 规格和芯片竞争格局。
+
+**执行方式：**
+1. 聚焦 AI PC 话题进行深度检索
+2. 整理 NPU 规格对比、芯片生态图谱
+3. 输出 AI PC 专项分析报告
+
+### 示例 3：区域视角
+
+**用户输入：**
+> 中国 PC 市场 2025 年有哪些趋势？对产品规划有什么启示？
+
+**执行方式：**
+1. 检索中国 PC 市场相关数据
+2. 分析区域特点与机会
+3. 提供区域产品策略建议
